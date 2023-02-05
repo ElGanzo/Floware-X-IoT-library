@@ -51,7 +51,7 @@
             "specs":{
                "Unit":{
                   "type":"String",
-                  "description":"kelvin, celsius or fahrenheit"
+                  "description":"kelvin, degreeCelsius or degreeFahrenheit"
                }
             }
          },
@@ -75,7 +75,7 @@
             "specs":{
                "Unit":{
                   "type":"String",
-                  "description":"Bar or Pascal"
+                  "description":"bar / millibar / pascal / kilopascal"
                }
             }
          },
@@ -83,7 +83,7 @@
             "specs":{
                "Unit":{
                   "type":"String",
-                  "description":"square (kilo/milli)metre or Acre or Hectare"
+                  "description":"squareMetre / squareCentimetre / squareMillimetre / squareKilometer / acre / hectare"
                }
             }
          },
@@ -91,7 +91,7 @@
             "specs":{
                "Unit":{
                   "type":"String",
-                  "description":"(Kilo/Milli/Micro)Gram / tonne / slug"
+                  "description":"kilogram / gram / milligram /microgram"
                }
             }
          },
@@ -99,7 +99,7 @@
             "specs":{
                "Unit":{
                   "type":"String",
-                  "description":"Newton / Pound / Ounce / Ton"
+                  "description":"newton / pound / ounce / ton"
                }
             }
          }
