@@ -1,4 +1,85 @@
 {
+    "application": {
+        "api": {
+            "create_application": {
+                "path": "applications",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_applications": {
+                "path": "applications",
+                "type": "GET",
+                "return": "JSON"
+            }
+        }
+    },
+    "devices": {
+        "api": {
+            "create_device": {
+                "path": "applications/[applicationId]/devices",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "set_child": {
+                "path": "applications/[applicationId]/devices",
+                "type": "PATCH",
+                "return": "JSON"
+            },
+            "get_all_devices": {
+                "path": "applications/[applicationId]/devices",
+                "type": "GET",
+                "return": "JSON"
+            }
+        }
+    },
+    "dashboard": {
+        "api": {
+            "create_dashboard": {
+                "path": "dashboards",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_application_dashboards": {
+                "path": "dashboards?applicationId=[applicationId]",
+                "type": "GET",
+                "return": "JSON"
+            }
+        }
+    },
+    "workflow": {
+        "api": {
+            "get_workflows": {
+                "path": "applications/[applicationId]/flows",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "create_workflow": {
+                "path": "applications/[applicationId]/flows",
+                "type": "POST",
+                "return": "JSON"
+            }
+        }
+    },
+    "service": {
+        "api": {
+            "add_app_key": {
+                "path": "applications/[applicationId]/keys",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_app_keys": {
+                "path": "applications/[applicationId]/keys",
+                "type": "GET",
+                "return": "JSON"
+            }
+        },
+        "specs": {
+            "topic": {
+                "type": "String",
+                "description": "Topic pattern"
+            }
+        }
+    },
     "device": [
         {
             "standalone": {

@@ -1,5 +1,6 @@
 {
     "device": {
+        "element_reference": "device",
         "specs": {
             "type": {
                 "type": "String",
@@ -13,9 +14,67 @@
                 "type": "Boolean",
                 "description": "If this device is a gateway"
             }
+        },
+        "api": {
+            "get_device": {
+                "path": "api/device/[deviceId]",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "create_device": {
+                "path": "api/device",
+                "type": "POST",
+                "return": "JSON"
+            }
+        }
+    },
+    "service": {
+        "element_reference": "device_profile",
+        "api": {
+            "create_device_profile": {
+                "path": "api/deviceProfile",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_device_profile": {
+                "path": "api/deviceProfile/[deviceProfileId]",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "get_default_device_profile": {
+                "path": "api/deviceProfileInfo/default",
+                "type": "GET",
+                "return": "JSON"
+            }
+        }
+    },
+    "attribute": {
+        "element_reference": "attribute",
+        "api": {
+            "get_attribute": {
+                "path": "api/plugins/telemetry/[objType]/[thingsboardId]/values/attributes",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "get_telemetry": {
+                "path": "api/plugins/telemetry/[objType]/[thingsboardId]/values/timeseries",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "create_server_attribute": {
+                "path": "api/plugins/telemetry/[objType]/[thingsboardId]/attributes/SERVER_SCOPE",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "create_telemetry": {
+                "path": "api/plugins/telemetry/[objType]/[thingsboardId]/timeseries/ANY?scope=ANY",
+                "type": "POST",
+                "return": "JSON"
+            }
         }
     },
     "system": {
+        "element_reference": "asset",
         "specs": {
             "type": {
                 "type": "String",
@@ -24,6 +83,76 @@
             "label": {
                 "type": "String",
                 "description": "Label of the asset"
+            }
+        },
+        "api": {
+            "get_asset_types": {
+                "path": "api/asset/types",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "get_assets_of_type": {
+                "path": "api/tenant/assets?type=[objectType]&pageSize=9999&page=0",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "get_asset": {
+                "path": "api/asset/[assetId]",
+                "type": "GET",
+                "return": "JSON"
+            },
+            "create_asset": {
+                "path": "api/asset",
+                "type": "POST",
+                "return": "JSON"
+            }
+        }
+    },
+    "dashboard": {
+        "element_reference": "dashboard",
+        "api": {
+            "create_dashboard": {
+                "path": "api/dashboard",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_dashboard": {
+                "path": "api/dashboard/[dashboardId]",
+                "type": "GET",
+                "return": "JSON"
+            }
+        }
+    },
+    "relation": {
+        "api": {
+            "create_relation": {
+                "path": "api/relation",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_list_relations": {
+                "path": "api/relations/info?fromId=[thingsboardId]&fromType=[fromEntityType]",
+                "type": "GET",
+                "return": "JSON"
+            }
+        }
+    },
+    "rule_chain": {
+        "api": {
+            "create_rule_chain": {
+                "path": "api/ruleChain",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "update_rule_chain": {
+                "path": "api/ruleChain/metadata?updateRelated=true",
+                "type": "POST",
+                "return": "JSON"
+            },
+            "get_rule_chain": {
+                "path": "api/ruleChain/[rulechainId]/metadata",
+                "type": "GET",
+                "return": "JSON"
             }
         }
     },
@@ -405,6 +534,7 @@
     ],
     "widget": [
         {
+            "element_reference": "widget_type",
             "line_chart": {
                 "specs": {
                     "attributeKey": {
@@ -574,6 +704,25 @@
                     "col": 0,
                     "id": "87ee4644-a6c2-ac87-919a-a89861ab4bf9"
                 }
+            }
+        }
+    ],
+    "storage": [
+        {
+            "save_timeseries": {
+                "specs": {
+                    "Default TTL": {
+                        "type": "integer",
+                        "description": "Default TTL in seconds"
+                    }
+                },
+                "config": {
+                    "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+                },
+                "output": [
+                    "Success",
+                    "Failure"
+                ]
             }
         }
     ]
