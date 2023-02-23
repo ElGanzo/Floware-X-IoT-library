@@ -8,13 +8,37 @@
          }
       },
       "api": {
+         "add_device": {
+            "path": "api/devices/[deviceId]?api-version=2022-07-31",
+            "type": "PUT",
+            "return": "JSON"
+         },
          "get_device": {
-            "path": "api/devices/{deviceId}?api-version=2022-07-31",
+            "path": "api/devices/[deviceId]?api-version=2022-07-31",
             "type": "GET",
             "return": "JSON"
          },
          "get_devices": {
             "path": "api/devices?api-version=2022-07-31",
+            "type": "GET",
+            "return": "JSON"
+         }
+      }
+   },
+   "device_template": {
+      "api": {
+         "add_device_template":{
+            "path":  "api/deviceTemplates/[deviceTemplateId]?api-version=2022-07-31",
+            "type": "PUT",
+            "return": "JSON"
+         },
+         "get_device_template": {
+            "path": "api/deviceTemplates/[deviceTemplateId]?api-version=2022-07-31",
+            "type": "GET",
+            "return": "JSON"
+         },
+         "get_devices_templates": {
+            "path": "api/deviceTemplates?api-version=2022-07-31",
             "type": "GET",
             "return": "JSON"
          }
@@ -141,33 +165,19 @@
    "dashboard": {
       "element_reference": "asset",
       "api": {
-         "create_dashboard": {
-            "path": "api/dashboard",
-            "type": "POST",
-            "return": "JSON"
-         },
          "get_dashboard": {
-            "path": "api/dashboard/[dashboardId]",
+            "path": "api/dashboards/[dashboardId]?api-version=2022-10-31-preview",
             "type": "GET",
             "return": "JSON"
-         }
-      }
-   },
-   "rule_chain": {
-      "api": {
-         "create_rule_chain": {
-            "path": "api/ruleChain",
-            "type": "POST",
-            "return": "JSON"
          },
-         "update_rule_chain": {
-            "path": "api/ruleChain/metadata?updateRelated=true",
-            "type": "POST",
-            "return": "JSON"
-         },
-         "get_rule_chain": {
-            "path": "api/ruleChain/[rulechainId]/metadata",
+         "get_dashboards": {
+            "path": "api/dashboards?api-version=2022-10-31-preview",
             "type": "GET",
+            "return": "JSON"
+         },
+         "add_dashboard": {
+            "path": " api/dashboards/[dashboardId]?api-version=2022-10-31-preview",
+            "type": "PUT",
             "return": "JSON"
          }
       }
