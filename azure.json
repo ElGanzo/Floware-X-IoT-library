@@ -9,19 +9,29 @@
       },
       "api": {
          "get_device": {
-            "path": "api/device/[deviceId]",
+            "path": "api/devices/{deviceId}?api-version=2022-07-31",
             "type": "GET",
             "return": "JSON"
          },
-         "create_device": {
-            "path": "api/device",
-            "type": "POST",
+         "get_devices": {
+            "path": "api/devices?api-version=2022-07-31",
+            "type": "GET",
             "return": "JSON"
          }
       }
    },
    "service": {
       "element_reference": "device_profile",
+      "specs": {
+         "Primary Key": {
+            "type": "String",
+            "description": "Primary key"
+         },
+         "Secondary Key": {
+            "type": "String",
+            "description": "Secondary key"
+         }
+      },
       "api": {
          "create_device_profile": {
             "path": "api/deviceProfile",
