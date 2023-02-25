@@ -44,6 +44,25 @@
          }
       }
    },
+   "device_group": {
+      "api": {
+         "add_device_group":{
+            "path": "api/deviceGroups/[deviceGroupId]?api-version=2022-07-31",
+            "type": "PUT",
+            "return": "JSON"
+         },
+         "get_device_group": {
+            "path": "api/deviceGroups/[deviceGroupId]?api-version=2022-07-31",
+            "type": "GET",
+            "return": "JSON"
+         },
+         "get_device_groups": {
+            "path": "api/deviceGroups?api-version=2022-07-31",
+            "type": "GET",
+            "return": "JSON"
+         }
+      }
+   },
    "service": {
       "element_reference": "device_profile",
       "specs": {
