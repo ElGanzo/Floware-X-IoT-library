@@ -27,8 +27,8 @@
    },
    "device_template": {
       "api": {
-         "add_device_template":{
-            "path":  "api/deviceTemplates/[deviceTemplateId]?api-version=2022-07-31",
+         "add_device_template": {
+            "path": "api/deviceTemplates/[deviceTemplateId]?api-version=2022-07-31",
             "type": "PUT",
             "return": "JSON"
          },
@@ -46,7 +46,7 @@
    },
    "device_group": {
       "api": {
-         "add_device_group":{
+         "add_device_group": {
             "path": "api/deviceGroups/[deviceGroupId]?api-version=2022-07-31",
             "type": "PUT",
             "return": "JSON"
@@ -302,6 +302,361 @@
                      "height": 1
                   }
                ]
+            }
+         }
+      }
+   ],
+   "request_out": [
+      {
+         "GET": {
+            "specs": {
+               "endpoint": {
+                  "type": "String",
+                  "description": "Destination url"
+               },
+               "header_Key": {
+                  "type": "String",
+                  "description": "Key"
+               },
+               "header_Value": {
+                  "type": "String",
+                  "description": "Value"
+               },
+               "body": {
+                  "type": "String",
+                  "description": "Body"
+               }
+            },
+            "config": {
+               "HTTP": {
+                  "inputs": {
+                     "body": "body",
+                     "headers": {
+                        "Key": "Value"
+                     },
+                     "method": "GET",
+                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
+                  },
+                  "runAfter": {
+                     "When_a_rule_is_fired": [
+                        "Succeeded"
+                     ]
+                  },
+                  "type": "Http"
+               }
+            }
+         },
+         "PUT": {
+            "specs": {
+               "endpoint": {
+                  "type": "String",
+                  "description": "Destination url"
+               },
+               "header_Key": {
+                  "type": "String",
+                  "description": "Key"
+               },
+               "header_Value": {
+                  "type": "String",
+                  "description": "Value"
+               },
+               "body": {
+                  "type": "String",
+                  "description": "Body"
+               }
+            },
+            "config": {
+               "HTTP": {
+                  "inputs": {
+                     "body": "body",
+                     "headers": {
+                        "Key": "Value"
+                     },
+                     "method": "PUT",
+                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
+                  },
+                  "runAfter": {
+                     "When_a_rule_is_fired": [
+                        "Succeeded"
+                     ]
+                  },
+                  "type": "Http"
+               }
+            }
+         },
+         "DELETE": {
+            "specs": {
+               "endpoint": {
+                  "type": "String",
+                  "description": "Destination url"
+               },
+               "header_Key": {
+                  "type": "String",
+                  "description": "Key"
+               },
+               "header_Value": {
+                  "type": "String",
+                  "description": "Value"
+               },
+               "body": {
+                  "type": "String",
+                  "description": "Body"
+               }
+            },
+            "config": {
+               "HTTP": {
+                  "inputs": {
+                     "body": "body",
+                     "headers": {
+                        "Key": "Value"
+                     },
+                     "method": "DELETE",
+                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
+                  },
+                  "runAfter": {
+                     "When_a_rule_is_fired": [
+                        "Succeeded"
+                     ]
+                  },
+                  "type": "Http"
+               }
+            }
+         },
+         "PATCH": {
+            "specs": {
+               "endpoint": {
+                  "type": "String",
+                  "description": "Destination url"
+               },
+               "header_Key": {
+                  "type": "String",
+                  "description": "Key"
+               },
+               "header_Value": {
+                  "type": "String",
+                  "description": "Value"
+               },
+               "body": {
+                  "type": "String",
+                  "description": "Body"
+               }
+            },
+            "config": {
+               "HTTP": {
+                  "inputs": {
+                     "body": "body",
+                     "headers": {
+                        "Key": "Value"
+                     },
+                     "method": "PATCH",
+                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
+                  },
+                  "runAfter": {
+                     "When_a_rule_is_fired": [
+                        "Succeeded"
+                     ]
+                  },
+                  "type": "Http"
+               }
+            }
+         },
+         "POST": {
+            "specs": {
+               "endpoint": {
+                  "type": "String",
+                  "description": "Destination url"
+               },
+               "header_Key": {
+                  "type": "String",
+                  "description": "Key"
+               },
+               "header_Value": {
+                  "type": "String",
+                  "description": "Value"
+               },
+               "body": {
+                  "type": "String",
+                  "description": "Body"
+               }
+            },
+            "config": {
+               "HTTP": {
+                  "inputs": {
+                     "body": "body",
+                     "headers": {
+                        "Key": "Value"
+                     },
+                     "method": "POST",
+                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
+                  },
+                  "runAfter": {
+                     "When_a_rule_is_fired": [
+                        "Succeeded"
+                     ]
+                  },
+                  "type": "Http"
+               }
+            }
+         }
+      }
+   ],
+   "pubsub_out": [
+      {
+         "Send message": {
+            "specs": {
+               "Connection name": {
+                  "type": "String",
+                  "description": "Api endpoint url"
+               },
+               "Authentication type": {
+                  "type": "String",
+                  "description": "Access Key"
+               },
+               "Connection string": {
+                  "type": "String",
+                  "description": "Azure Service Bus Connection String"
+               }
+            },
+            "config": {
+               "Send_message": {
+                  "inputs": {
+                     "host": {
+                        "connection": {
+                           "name": "@parameters('$connections')['undefined']['connectionId']"
+                        }
+                     },
+                     "method": "post",
+                     "path": "/@{encodeURIComponent(encodeURIComponent(''))}/messages",
+                     "queries": {
+                        "systemProperties": "None"
+                     }
+                  },
+                  "runAfter": {
+                     "When_a_rule_is_fired": [
+                        "Succeeded"
+                     ]
+                  },
+                  "type": "ApiConnection"
+               }
+            },
+            "output": [
+               "Success"
+            ]
+         }
+      }
+   ],
+   "storage": [
+      {
+         "Create_or_update_a_device": {
+            "specs": {
+               "Device id": {
+                  "type": "String",
+                  "description": "Unique ID of the device"
+               },
+               "Display name": {
+                  "type": "String",
+                  "description": "Name should be same as the ID"
+               }
+            },
+            "config": {
+               "Create_or_update_a_device": {
+                  "inputs": {
+                     "body": {
+                        "displayName": "Name should be same as the ID"
+                     },
+                     "host": {
+                        "connection": {
+                           "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
+                        }
+                     },
+                     "method": "put",
+                     "path": "/api/ga_2022_07_31/devices/@{encodeURIComponent('Unique ID of the device')}",
+                     "queries": {
+                        "application": "Azure iot central application id"
+                     }
+                  },
+                  "runAfter": {},
+                  "type": "ApiConnection"
+               }
+            }
+         },
+         "Insert_Document": {
+            "specs": {
+               "Collection name": {
+                  "type": "String",
+                  "Collection name": "collection name"
+               },
+               "Data source": {
+                  "type": "String",
+                  "description": "cluster name"
+               },
+               "Database": {
+                  "type": "String",
+                  "description": "DB name"
+               },
+               "Document": {
+                  "type": "String",
+                  "description": "ejson file"
+               }
+            },
+            "config": {
+               "Insert_Document": {
+                  "inputs": {
+                     "body": {
+                        "collection": "collection name",
+                        "dataSource": "cluster name",
+                        "database": "db name",
+                        "document": "ejson file"
+                     },
+                     "headers": {
+                        "Access-Control-Request-Headers": "*",
+                        "Content-Type": "application/json"
+                     },
+                     "host": {
+                        "connection": {
+                           "name": "@parameters('$connections')['mongodb']['connectionId']"
+                        }
+                     },
+                     "method": "post",
+                     "path": "/action/insertOne"
+                  },
+                  "runAfter": {},
+                  "type": "ApiConnection"
+               }
+            }
+         }
+      }
+   ],
+   "datastream_out": [
+      {
+         "http": {
+            "specs": {
+               "endpoint": {
+                  "type": "String",
+                  "description": "Api endpoint url"
+               },
+               "method": {
+                  "type": "String",
+                  "description": "Request method"
+               }
+            },
+            "config": {
+               "Run_a_device_command": {
+                  "inputs": {
+                      "host": {
+                          "connection": {
+                              "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
+                          }
+                      },
+                      "method": "post",
+                      "path": "/api/v1/devices/@{encodeURIComponent('device id')}/commands/@{encodeURIComponent('dev command')}",
+                      "queries": {
+                           "application": "app id"
+                      }
+                  },
+                  "runAfter": {},
+                  "type": "ApiConnection"
+              }
             }
          }
       }
