@@ -326,24 +326,6 @@
                   "type": "String",
                   "description": "Body"
                }
-            },
-            "config": {
-               "HTTP": {
-                  "inputs": {
-                     "body": "body",
-                     "headers": {
-                        "Key": "Value"
-                     },
-                     "method": "GET",
-                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
-                  },
-                  "runAfter": {
-                     "When_a_rule_is_fired": [
-                        "Succeeded"
-                     ]
-                  },
-                  "type": "Http"
-               }
             }
          },
          "PUT": {
@@ -363,24 +345,6 @@
                "body": {
                   "type": "String",
                   "description": "Body"
-               }
-            },
-            "config": {
-               "HTTP": {
-                  "inputs": {
-                     "body": "body",
-                     "headers": {
-                        "Key": "Value"
-                     },
-                     "method": "PUT",
-                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
-                  },
-                  "runAfter": {
-                     "When_a_rule_is_fired": [
-                        "Succeeded"
-                     ]
-                  },
-                  "type": "Http"
                }
             }
          },
@@ -402,24 +366,6 @@
                   "type": "String",
                   "description": "Body"
                }
-            },
-            "config": {
-               "HTTP": {
-                  "inputs": {
-                     "body": "body",
-                     "headers": {
-                        "Key": "Value"
-                     },
-                     "method": "DELETE",
-                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
-                  },
-                  "runAfter": {
-                     "When_a_rule_is_fired": [
-                        "Succeeded"
-                     ]
-                  },
-                  "type": "Http"
-               }
             }
          },
          "PATCH": {
@@ -439,24 +385,6 @@
                "body": {
                   "type": "String",
                   "description": "Body"
-               }
-            },
-            "config": {
-               "HTTP": {
-                  "inputs": {
-                     "body": "body",
-                     "headers": {
-                        "Key": "Value"
-                     },
-                     "method": "PATCH",
-                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
-                  },
-                  "runAfter": {
-                     "When_a_rule_is_fired": [
-                        "Succeeded"
-                     ]
-                  },
-                  "type": "Http"
                }
             }
          },
@@ -478,24 +406,6 @@
                   "type": "String",
                   "description": "Body"
                }
-            },
-            "config": {
-               "HTTP": {
-                  "inputs": {
-                     "body": "body",
-                     "headers": {
-                        "Key": "Value"
-                     },
-                     "method": "POST",
-                     "uri": "https://genzingapplication.azureiotcentral.com/mioURI"
-                  },
-                  "runAfter": {
-                     "When_a_rule_is_fired": [
-                        "Succeeded"
-                     ]
-                  },
-                  "type": "Http"
-               }
             }
          }
       }
@@ -516,32 +426,7 @@
                   "type": "String",
                   "description": "Azure Service Bus Connection String"
                }
-            },
-            "config": {
-               "Send_message": {
-                  "inputs": {
-                     "host": {
-                        "connection": {
-                           "name": "@parameters('$connections')['undefined']['connectionId']"
-                        }
-                     },
-                     "method": "post",
-                     "path": "/@{encodeURIComponent(encodeURIComponent(''))}/messages",
-                     "queries": {
-                        "systemProperties": "None"
-                     }
-                  },
-                  "runAfter": {
-                     "When_a_rule_is_fired": [
-                        "Succeeded"
-                     ]
-                  },
-                  "type": "ApiConnection"
-               }
-            },
-            "output": [
-               "Success"
-            ]
+            }
          }
       }
    ],
@@ -556,27 +441,6 @@
                "Display name": {
                   "type": "String",
                   "description": "Name should be same as the ID"
-               }
-            },
-            "config": {
-               "Create_or_update_a_device": {
-                  "inputs": {
-                     "body": {
-                        "displayName": "Name should be same as the ID"
-                     },
-                     "host": {
-                        "connection": {
-                           "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
-                        }
-                     },
-                     "method": "put",
-                     "path": "/api/ga_2022_07_31/devices/@{encodeURIComponent('Unique ID of the device')}",
-                     "queries": {
-                        "application": "Azure iot central application id"
-                     }
-                  },
-                  "runAfter": {},
-                  "type": "ApiConnection"
                }
             }
          },
@@ -598,162 +462,24 @@
                   "type": "String",
                   "description": "ejson file"
                }
-            },
-            "config": {
-               "Insert_Document": {
-                  "inputs": {
-                     "body": {
-                        "collection": "collection name",
-                        "dataSource": "cluster name",
-                        "database": "db name",
-                        "document": "ejson file"
-                     },
-                     "headers": {
-                        "Access-Control-Request-Headers": "*",
-                        "Content-Type": "application/json"
-                     },
-                     "host": {
-                        "connection": {
-                           "name": "@parameters('$connections')['mongodb']['connectionId']"
-                        }
-                     },
-                     "method": "post",
-                     "path": "/action/insertOne"
-                  },
-                  "runAfter": {},
-                  "type": "ApiConnection"
-               }
+            }
             }
          }
-      }
    ],
    "data_stream_out": [
       {
-         "http": {
+         "Run_a_device_command": {
             "specs": {
-               "endpoint": {
+               "Device id": {
                   "type": "String",
-                  "description": "Api endpoint url"
+                  "description": "target device id"
                },
-               "method": {
+               "Command name": {
                   "type": "String",
-                  "description": "Request method"
-               }
-            },
-            "config": {
-               "Run_a_device_command": {
-                  "inputs": {
-                     "host": {
-                        "connection": {
-                           "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
-                        }
-                     },
-                     "method": "post",
-                     "path": "/api/v1/devices/@{encodeURIComponent('device id')}/commands/@{encodeURIComponent('dev command')}",
-                     "queries": {
-                        "application": "app id"
-                     }
-                  },
-                  "runAfter": {},
-                  "type": "ApiConnection"
+                  "description": "device command name"
                }
             }
          }
       }
-   ],
-   "Logic_app_JSON_template": {
-      "json_structure": {
-         "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-            "workflows_LogicApplicationNameee_name": {
-               "defaultValue": "maZioskyDai",
-               "type": "String"
-            },
-            "connections_azureiotcentral_externalid": {
-               "defaultValue": "/subscriptions/24a9446b-8b9b-42af-85ab-6476a6ad7cfc/resourceGroups/GenzingResourceGroup/providers/Microsoft.Web/connections/azureiotcentral",
-               "type": "String"
-            }
-         },
-         "variables": {},
-         "resources": [
-            {
-               "type": "Microsoft.Logic/workflows",
-               "apiVersion": "2017-07-01",
-               "name": "[parameters('workflows_LogicApplicationNameee_name')]",
-               "location": "francesouth",
-               "tags": {
-                  "ms-resource-usage": "azure-cloud-shell"
-               },
-               "properties": {
-                  "state": "Enabled",
-                  "definition": {
-                     "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-                     "contentVersion": "1.0.0.0",
-                     "parameters": {
-                        "$connections": {
-                           "defaultValue": {},
-                           "type": "Object"
-                        }
-                     },
-                     "triggers": {
-                        "Quando_una_regola_viene_generata": {
-                           "type": "ApiConnectionWebhook",
-                           "inputs": {
-                              "body": {
-                                 "rule": "d3dea85d-c411-4b1d-8772-02fc2b17f12b",
-                                 "url": "@{listCallbackUrl()}"
-                              },
-                              "host": {
-                                 "connection": {
-                                    "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
-                                 }
-                              },
-                              "path": "/api/preview/_internal/workflow/triggers",
-                              "queries": {
-                                 "application": "91d7a589-aeee-49f2-a0bb-3abdf92825ac"
-                              }
-                           }
-                        }
-                     },
-                     "actions": {
-                        "Aggiorna_proprietà_dispositivo": {
-                           "runAfter": {},
-                           "type": "ApiConnection",
-                           "inputs": {
-                              "body": {
-                                 "CloudPropertyPrimoDev": 34
-                              },
-                              "host": {
-                                 "connection": {
-                                    "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
-                                 }
-                              },
-                              "method": "patch",
-                              "path": "/api/v1/devices/@{encodeURIComponent(parameters('PrimoDevice'))}/properties",
-                              "queries": {
-                                 "application": "91d7a589-aeee-49f2-a0bb-3abdf92825ac",
-                                 "template": "dtmi:ynkz72wor:fplbzpsksh"
-                              }
-                           }
-                        }
-                     },
-                     "outputs": {}
-                  },
-                  "parameters": {
-                     "$connections": {
-                        "value": {
-                           "azureiotcentral": {
-                              "connectionId": "[parameters('connections_azureiotcentral_externalid')]",
-                              "connectionName": "azureiotcentral",
-                              "id": "/subscriptions/24a9446b-8b9b-42af-85ab-6476a6ad7cfc/providers/Microsoft.Web/locations/francesouth/managedApis/azureiotcentral"
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         ]
-      }
-   }
+   ]
 }
