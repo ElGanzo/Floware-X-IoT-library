@@ -627,7 +627,7 @@
          }
       }
    ],
-   "datastream_out": [
+   "data_stream_out": [
       {
          "http": {
             "specs": {
