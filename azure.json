@@ -310,7 +310,7 @@
       {
          "GET": {
             "specs": {
-               "endpoint": {
+               "URI": {
                   "type": "String",
                   "description": "Destination url"
                },
@@ -334,7 +334,7 @@
          },
          "PUT": {
             "specs": {
-               "endpoint": {
+               "URI": {
                   "type": "String",
                   "description": "Destination url"
                },
@@ -358,7 +358,7 @@
          },
          "DELETE": {
             "specs": {
-               "endpoint": {
+               "URI": {
                   "type": "String",
                   "description": "Destination url"
                },
@@ -382,7 +382,7 @@
          },
          "PATCH": {
             "specs": {
-               "endpoint": {
+               "URI": {
                   "type": "String",
                   "description": "Destination url"
                },
@@ -406,7 +406,7 @@
          },
          "POST": {
             "specs": {
-               "endpoint": {
+               "URI": {
                   "type": "String",
                   "description": "Destination url"
                },
