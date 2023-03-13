@@ -325,6 +325,10 @@
                "body": {
                   "type": "String",
                   "description": "Body"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          },
@@ -345,6 +349,10 @@
                "body": {
                   "type": "String",
                   "description": "Body"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          },
@@ -365,6 +373,10 @@
                "body": {
                   "type": "String",
                   "description": "Body"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          },
@@ -385,6 +397,10 @@
                "body": {
                   "type": "String",
                   "description": "Body"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          },
@@ -405,6 +421,10 @@
                "body": {
                   "type": "String",
                   "description": "Body"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          }
@@ -425,6 +445,10 @@
                "Connection string": {
                   "type": "String",
                   "description": "Azure Service Bus Connection String"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          }
@@ -441,6 +465,10 @@
                "Display name": {
                   "type": "String",
                   "description": "Name should be same as the ID"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          },
@@ -461,10 +489,14 @@
                "Document": {
                   "type": "String",
                   "description": "ejson file"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
-            }
          }
+      }
    ],
    "data_stream_out": [
       {
@@ -477,6 +509,10 @@
                "Command name": {
                   "type": "String",
                   "description": "device command name"
+               },
+               "rule id": {
+                  "type": "String",
+                  "description": "Azure target rule id"
                }
             }
          }
