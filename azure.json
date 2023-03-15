@@ -434,17 +434,13 @@
       {
          "Send message": {
             "specs": {
-               "Connection name": {
+               "Session Id": {
                   "type": "String",
-                  "description": "Api endpoint url"
+                  "description": "Session Id"
                },
-               "Authentication type": {
+               "Session properties": {
                   "type": "String",
-                  "description": "Access Key"
-               },
-               "Connection string": {
-                  "type": "String",
-                  "description": "Azure Service Bus Connection String"
+                  "description": "'Run details' or 'None'"
                },
                "rule id": {
                   "type": "String",
