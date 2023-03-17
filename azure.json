@@ -304,7 +304,49 @@
                ]
             }
          },
-         "Map (property)": {}
+         "Map (property)": {
+            "config": {
+               "displayName": "Dashboard",
+               "tiles": [
+                  {
+                     "displayName": "Device - Widget Map (property)",
+                     "configuration": {
+                        "type": "mapProperty",
+                        "capabilities": [
+                           {
+                              "capability": "locationProperty",
+                              "aggregateFunction": "avg"
+                           }
+                        ],
+                        "group": "b514a79f-1c9d-4647-9adf-d8953ca4f91a",
+                        "devices": [
+                           "2cjxx3vw5wy"
+                        ],
+                        "format": {
+                           "zoomLevel": 4
+                        }
+                     },
+                     "x": 0,
+                     "y": 0,
+                     "width": 2,
+                     "height": 2
+                  },
+                  {
+                     "displayName": "Documentation",
+                     "configuration": {
+                        "type": "markdown",
+                        "description": "Comprehensive help articles and links to more support.",
+                        "href": "https://aka.ms/iotcentral-pnp-docs",
+                        "image": "4d6c6373-0220-4191-be2e-d58ca2a289e1"
+                     },
+                     "x": 2,
+                     "y": 0,
+                     "width": 1,
+                     "height": 1
+                  }
+               ]
+            }
+         }
       }
    ],
    "request_out": [
