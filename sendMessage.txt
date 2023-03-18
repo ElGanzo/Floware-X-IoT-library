@@ -1,0 +1,101 @@
+ SETL sendMessageAction:({
+            "Send_message": {
+                "inputs": {
+                    "body": {
+                        "SessionId": pubsubOutSpecRecs[0]
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['servicebus']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    # assume that "action" is what we need to send as message: todo maybe the aim of this procedure could be different in future
+                    "path": "/@{encodeURIComponent(encodeURIComponent(triggerBody()?['action']?['displayName']))}/messages",
+                    "queries": {
+                        "systemProperties": pubsubOutSpecRecs[1]
+                    }
+                },
+                "runAfter": map(),
+                "type": "ApiConnection"
+            }
+        })
+
+        SETL finalObject:({
+            "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "workflows_"+newLogicAppName+"_name": {
+                "defaultValue": newLogicAppName,
+                "type": "String"
+                },
+                "connections_azureiotcentral_externalid": {
+                    "defaultValue": "/subscriptions/"+subscriptionId+"/resourceGroups/"+mainResourceGroupName+"/providers/Microsoft.Web/connections/azureiotcentral",
+                    "type": "String"
+                },
+                "connections_servicebus_externalid": {
+                    "defaultValue": "/subscriptions/"+subscriptionId+"/resourceGroups/"+mainResourceGroupName+"/providers/Microsoft.Web/connections/servicebus",
+                    "type": "String"
+                }
+            },
+            "variables": map(),
+            "resources": 
+            ({({ 
+                "type": "Microsoft.Logic/workflows",
+                "apiVersion": "2017-07-01",
+                "name": "[parameters('workflows_"+newLogicAppName+"_name')]",
+                "location": "francesouth",
+                "properties": {
+                    "state": "Enabled",
+                    "definition": {
+                        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                        "contentVersion": "1.0.0.0",
+                        "parameters": {
+                            "$connections": {
+                                "defaultValue": map(),
+                                "type": "Object"
+                            }
+                        },
+                        "triggers": {
+                            "When_a_rule_is_fired": {
+                                "type": "ApiConnectionWebhook",
+                                "inputs": {
+                                    "body": {
+                                        "rule": ruleId, # pubsubOutSpecRecs[2],
+                                        "url": "@{listCallbackUrl()}"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
+                                        }
+                                    },
+                                    "path": "/api/preview/_internal/workflow/triggers",
+                                    "queries": {
+                                        "application": applicationId
+                                    }
+                                }
+                            }
+                        },
+                        "actions": sendMessageAction,
+                        "outputs": map()
+                    },
+                    "parameters": {
+                        "$connections": {
+                            "value": {
+                                "azureiotcentral": {
+                                    "connectionId": "[parameters('connections_azureiotcentral_externalid')]",
+                                    "connectionName": "azureiotcentral",
+                                    "id": "/subscriptions/"+subscriptionId+"/providers/Microsoft.Web/locations/francesouth/managedApis/azureiotcentral"
+                                },
+                                "servicebus": {
+                                    "connectionId": "[parameters('connections_servicebus_externalid')]",
+                                    "connectionName": "servicebus",
+                                    "id": "/subscriptions/"+subscriptionId+"/providers/Microsoft.Web/locations/francesouth/managedApis/servicebus"
+                                }
+                            }
+                        }
+                    }
+                }
+          }) })
+        })
+        

@@ -1,0 +1,100 @@
+"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "workflows_"+newLogicAppName+"_name": {
+                "defaultValue": newLogicAppName,
+                "type": "String"
+                },
+                "connections_azureiotcentral_externalid": {
+                    "defaultValue": "/subscriptions/"+subscriptionId+"/resourceGroups/"+mainResourceGroupName+"/providers/Microsoft.Web/connections/azureiotcentral",
+                    "type": "String"
+                },
+                "connections_mongodb_externalid": {
+                    "defaultValue": "/subscriptions/"+subscriptionId+"/resourceGroups/"+mainResourceGroupName+"/providers/Microsoft.Web/connections/mongodb",
+                    "type": "String"
+                }
+            },
+            "variables": map(),
+            "resources": 
+            ({({ 
+                "type": "Microsoft.Logic/workflows",
+                "apiVersion": "2017-07-01",
+                "name": "[parameters('workflows_"+newLogicAppName+"_name')]",
+                "location": "francesouth",
+                "properties": {
+                    "state": "Enabled",
+                    "definition": {
+                        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                        "contentVersion": "1.0.0.0",
+                        "parameters": {
+                            "$connections": {
+                                "defaultValue": map(),
+                                "type": "Object"
+                            }
+                        },
+                        "triggers": {
+                            "When_a_rule_is_fired": {
+                                "type": "ApiConnectionWebhook",
+                                "inputs": {
+                                    "body": {
+                                        "rule":  [4],
+                                        "url": "@{listCallbackUrl()}"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
+                                        }
+                                    },
+                                    "path": "/api/preview/_internal/workflow/triggers",
+                                    "queries": {
+                                        "application": applicationId
+                                    }
+                                }
+                            }
+                        },
+                        "actions": {
+                            "Insert_Document": {
+                                "runAfter": map(),
+                                "type": "ApiConnection",
+                                "inputs": {
+                                    "body": {
+                                        "collection": stoargeSpecRecs[0],
+                                        "dataSource": stoargeSpecRecs[1],
+                                        "database": stoargeSpecRecs[2],
+                                        "document": stoargeSpecRecs[3]
+                                    },
+                                    "headers": {
+                                        "Access-Control-Request-Headers": "*",
+                                        "Content-Type": "application/json"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['mongodb']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/action/insertOne"
+                                }
+                            }
+                        },
+                        "outputs": map()
+                    },
+                    "parameters": {
+                        "$connections": {
+                            "value": {
+                                "azureiotcentral": {
+                                    "connectionId": "[parameters('connections_azureiotcentral_externalid')]",
+                                    "connectionName": "azureiotcentral",
+                                    "id": "/subscriptions/"+subscriptionId+"/providers/Microsoft.Web/locations/francesouth/managedApis/azureiotcentral"
+                                },
+                                "mongodb": {
+                                    "connectionId": "[parameters('connections_mongodb_externalid')]",
+                                    "connectionName": "mongodb",
+                                    "id": "/subscriptions/"+subscriptionId+"/providers/Microsoft.Web/locations/francesouth/managedApis/mongodb"
+                                }
+                            }
+                        }
+                    }
+                }
+          }) })
+    })
