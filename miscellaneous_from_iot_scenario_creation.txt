@@ -1,0 +1,48 @@
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#
+#                         IMPORTANT
+#
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# set correct specification table on PSM model objects,
+# useful for all the scripts.
+PROCEDURE global INITIALIZE_PSM_MODEL_OBJECTS
+modelid:integer
+selection:string
+classname:string
+{
+    GET_SPECIFICATIONS platform: (selection) specs: specs
+    SET specifications: (specs)
+
+	CC "Core" GET_ALL_OBJS_OF_CLASSNAME modelid:(modelid) classname:(classname)
+    FOR obj in:(objids) {
+		SET_SPECIFICATIONS objID: (obj) specs: (specifications)
+    }
+}
+
+
+# update psm logic model interrefs on "data_stream_in" objects after being translated in PSM 
+PROCEDURE global UPDATE_LOGIC_INTERREFS
+devopsPsmModelid:integer
+logicPsmModelId:integer
+{
+    CC "Core" GET_ALL_OBJS_OF_CLASSNAME modelid:(logicPsmModelId) classname:("data_stream_in")
+    FOR data_stream_in in:(objids) {
+        CC "Core" GET_CLASS_ID objid:(VAL data_stream_in)
+        CC "Core" GET_ATTR_ID classid:(classid) attrname:("service")
+
+        # get actual interref to extract the "service" object name
+        CC "Core" GET_INTERREF objid:(VAL data_stream_in) attrname:("service")
+
+        SETL oldServiceId:(tobjid)
+        CC "Core" GET_ATTR_VAL objid:(oldServiceId) attrname:("Name")
+        SETL oldServiceName:(val)
+
+        # take "service" object of the ops PSM file
+        CC "Core" REMOVE_ALL_INTERREFS objid:(VAL data_stream_in) attrid:(attrid)
+
+        # re-add correct "service" object (the one who points to Device view PSM model) as interref
+        CC "Core" GET_CLASS_ID classname:("service")
+        CC "Core" GET_OBJ_ID modelid:(devopsPsmModelid) classid:(classid) objname:(oldServiceName)
+        CC "Core" ADD_INTERREF objid:(VAL data_stream_in) attrid:(attrid) tobjid:(objid)
+    }
+}
