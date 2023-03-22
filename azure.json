@@ -373,6 +373,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          },
          "PUT": {
@@ -397,6 +402,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          },
          "DELETE": {
@@ -421,6 +431,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          },
          "PATCH": {
@@ -445,6 +460,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          },
          "POST": {
@@ -469,6 +489,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          }
       }
@@ -489,6 +514,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          }
       }
@@ -509,6 +539,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          },
          "Insert_Document": {
@@ -533,6 +568,11 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          }
       }
@@ -553,8 +593,81 @@
                   "type": "String",
                   "description": "Azure target rule id"
                }
+            },
+            "config":{
+               "output": [
+                  "Success"
+              ]
             }
          }
       }
+   ],
+   "formatting": [
+      {
+         "config":{
+            "output": [
+               "Success", "Failure"
+           ]
+         }
+      }
+   ],
+   "scripting": [
+      {
+         "config":{
+            "output": [
+               "Success", "Failure"
+           ]
+         }
+      }
+   ],
+   "aggregation": [
+      {
+         "config":{
+            "output": [
+               "Success", "Failure"
+           ]
+         }
+      }
+   ],
+   "filtering": [
+      {
+         "config":{
+            "output": [
+               "True", "False"
+           ]
+         }
+      }
+   ],
+   "data_stream_in":[
+      {
+         "Telemetry": {
+            "specs": {
+               "Telemetry name": {
+                  "type": "String",
+                  "description": "Name of the telemetry that sends information"
+               }
+            }
+         },
+         "config":{
+            "DatastreamInName": {
+               "inputs": {
+                   "host": {
+                       "connection": {
+                           "name": "@parameters('$connections')['azureiotcentral']['connectionId']"
+                       }
+                   },
+                   "method": "get",
+                   "path": "/api/v1/devices/@{encodeURIComponent('NomeDevice')}/telemetry/@{encodeURIComponent('[NomeAttribute]')}",
+                   "queries": {
+                       "application": "idApplicazione"
+                   }
+               },
+               "runAfter": {},
+               "type": "ApiConnection"
+           }
+         }
+      }
    ]
+
+
 }

@@ -1,0 +1,19 @@
+Triggers: rimane sempre quello
+
+	- chiedere (main)rule id una volta sola -> la rule che eseguita inizialmente (di incipit)
+
+Actions: rimangono quelle ---> il runafter lo prendo dinamicamente già --> OK
+	
+
+Condition: un blocco con "actions" con le varie actions, ed un blocco "else" con a sua volta un blocco "actions"
+
+
+
+
+
+ADOXX
+
+Rule ID: una volta sola, l'id della rule che fa partire ogni volta l'applicazione della logica
+
+
+Blocchi verdi: 
