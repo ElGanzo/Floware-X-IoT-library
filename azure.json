@@ -370,11 +370,9 @@
                   "description": "Body"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          },
          "PUT": {
             "specs": {
@@ -395,11 +393,9 @@
                   "description": "Body"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          },
          "DELETE": {
             "specs": {
@@ -420,11 +416,9 @@
                   "description": "Body"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          },
          "PATCH": {
             "specs": {
@@ -445,11 +439,9 @@
                   "description": "Body"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          },
          "POST": {
             "specs": {
@@ -470,11 +462,9 @@
                   "description": "Body"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          }
       }
    ],
@@ -491,11 +481,9 @@
                   "description": "'Run details' or 'None'"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          }
       }
    ],
@@ -512,11 +500,9 @@
                   "description": "Name should be same as the ID"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          },
          "Insert_Document": {
             "specs": {
@@ -537,11 +523,9 @@
                   "description": "ejson file"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          }
       }
    ],
@@ -558,11 +542,9 @@
                   "description": "device command name"
                }
             },
-            "config": {
-               "output": [
-                  "Success"
-               ]
-            }
+            "output": [
+               "Success"
+            ]
          }
       }
    ],
@@ -575,12 +557,10 @@
                   "description": "Code to be executed"
                }
             },
-            "config": {
-               "output": [
-                  "Success",
-                  "Failure"
-               ]
-            }
+            "output": [
+               "Success",
+               "Failure"
+            ]
          }
       }
    ],
@@ -593,12 +573,10 @@
                   "description": "Code to be executed"
                }
             },
-            "config": {
-               "output": [
-                  "Success",
-                  "Failure"
-               ]
-            }
+            "output": [
+               "Success",
+               "Failure"
+            ]
          }
       }
    ],
@@ -611,12 +589,10 @@
                   "description": "Code to be executed"
                }
             },
-            "config": {
-               "output": [
-                  "Success",
-                  "Failure"
-               ]
-            }
+            "output": [
+               "Success",
+               "Failure"
+            ]
          }
       }
    ],
@@ -633,12 +609,10 @@
                   "description": "integer value"
                }
             },
-            "config": {
-               "output": [
-                  "True",
-                  "False"
-               ]
-            }
+            "output": [
+               "True",
+               "False"
+            ]
          }
       }
    ],
