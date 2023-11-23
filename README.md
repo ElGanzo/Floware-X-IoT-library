@@ -1,4 +1,3 @@
-# Floware-X-IoT-library
-Merged library from Floware &amp; X-IoT Library.
+# Technologies for Big Data Management - Object Detection X ADOxx
+Project for TBDM exam in Computer Science course (LM-18) at the University of Camerino, (MC) Italy
 
-Project for Degree Thesis in "Informatica (L-31)" at the University of Camerino, (MC) Italy
