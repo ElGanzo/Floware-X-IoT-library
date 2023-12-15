@@ -2,9 +2,17 @@
    "device": {
       "element_reference": "device",
       "specs": {
-         "device group id": {
+         "capability1": {
             "type": "String",
-            "description": "Azure device group id"
+            "description": "insert specs here"
+         },
+         "capability2": {
+            "type": "String",
+            "description": "insert specs here"
+         },
+         "Nspecification": {
+            "type": "String",
+            "description": "insert specs here"
          }
       },
       "api": {
