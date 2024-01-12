@@ -1,7 +1,7 @@
 {
-   "devices":[
+   "objects":[
       {
-         "deviceType":"router",
+         "objectType":"person",
          "capability1":"ToDefine",
          "capability2":"",
          "Nspecification":"",
@@ -9,7 +9,7 @@
          "Yposition":"2"
       },
       {
-         "deviceType":"gateway",
+         "objectType":"gateway",
          "capability1":"",
          "capability2":"BetterEmptyThanUndefined",
          "Nspecification":"",
@@ -17,7 +17,7 @@
          "Yposition":"2"
       },
       {
-         "deviceType":"router",
+         "objectType":"thermometer",
          "capability1":"BothFilled",
          "capability2":"BothFilled",
          "Nspecification":"BothFilled",
@@ -25,7 +25,7 @@
          "Yposition":"2"
       },
       {
-         "deviceType":"router",
+         "objectType":"photocell",
          "capability1":"",
          "capability2":"",
          "Nspecification":"",
